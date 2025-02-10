@@ -1,10 +1,15 @@
 import React from 'react'
+import Link from 'next/link';
 
 function AllTasks(props) {
     const { tasks } = props;
   return (
     <div>
-      {tasks.map(task => <p key={task.id}>{task.title}</p>)}
+      {tasks.map(task => (
+        <div>
+            <Link href={`/tasks/${task.id}`} key={task.id}>{task.title}</Link>
+        </div>
+      ))}
     </div>
   )
 }
