@@ -1,3 +1,8 @@
+// import fs from "fs"
+// import path from "path";
+
+import { redirect } from "next/dist/server/api-utils";
+
 function HomePage(props) {
     const { products } = props;
     return (
@@ -7,13 +12,13 @@ function HomePage(props) {
     );
   }
   
-export async function getStaticProps() {
+export async function getStaticProps() { 
+    
     return {
         props: {
-           products: [
-            {id: "p1", title: "Product 1"}
-           ]
-        }
+           products: [{id: "p1", title: "okay"}]
+        },
+        redirect: "/events/1"
     }
 }
 
