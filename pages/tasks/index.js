@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
+import { revalidatePath } from 'next/cache';
 
 function AllTasks(props) {
     const { tasks } = props;
@@ -17,11 +18,13 @@ function AllTasks(props) {
 export async function getStaticProps() {
     const res = await fetch("http://127.0.0.1:8000/tasks/");
     const tasks = await res.json();
-
+     console.log("regenerating....");
+         
     return {
         props: {
             tasks
-        }
+        },
+        revalidate: 10,
     }
 }
 
