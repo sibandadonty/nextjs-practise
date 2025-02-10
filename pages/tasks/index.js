@@ -23,7 +23,6 @@ export async function getStaticProps() {
             tasks
         }
     }
-    
 }
 
 export default AllTasks

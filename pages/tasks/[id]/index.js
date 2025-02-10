@@ -26,4 +26,18 @@ export async function getStaticProps(context) {
     }
 }
 
+export async function getStaticPaths() {
+    const res = await fetch("http://127.0.0.1:8000/tasks/");
+    const tasks = await res.json();
+    
+
+    const paths = tasks.map(task => ({params: {id: String(task.id)}}))
+
+    return {
+        paths,
+        fallback: false
+    }
+    
+}
+
 export default TaskDetails
